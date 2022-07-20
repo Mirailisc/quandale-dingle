@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import audio from './assets/audio.mp3'
+import image from './assets/cringe.jpg'
+import './App.css'
 
 function App() {
+  const [click, setClick] = useState(false)
+
+  const handleAudio = () => {
+    const audio_element = new Audio(audio)
+    audio_element.play()
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {click ? <div>
+        <img src={image} alt="cringe" />
+      </div> : <button onClick={() => {
+        setClick(true)
+        handleAudio()
+      }}>Click</button>}
     </div>
   );
 }
